@@ -36,5 +36,3 @@ raw_numbers = [
 
 sanitized_numbers = [normalize_phone(num) for num in raw_numbers]
 print("Нормалізовані номери телефонів для SMS-розсилки:", sanitized_numbers)
-
-# check commit to github
