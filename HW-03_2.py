@@ -28,18 +28,17 @@ def get_numbers_ticket(min: int, max: int, quantity: int):
         raise ValueError("Кількість виграшних номерів не може перевищувати кількісьб номерів у заданому діапазоні значень.")
     
     count = 0                                           # Визначаємо нульову кількість обраних номерів до старту лотереї
-    lottery_numbers = set()                             # Для забезпечення унікальності обраних номерів, визначаємо результати у вигляді множини
+    lottery_numbers = []                                # Для забезпечення унікальності обраних номерів, визначаємо результати у вигляді множини
     
-    while count != quantity:
+    while len(lottery_numbers) != quantity:
         step_number = random.randint(min, max)
-        lottery_numbers.add(step_number)                # Додаємо випадковий номер до списку результатів
-        print(step_number)                              # Виведення результату проміжного кроку (для самоперевірки дії коду)
-        count += 1
-        
-    sorted_lottery_numbers = sorted(lottery_numbers)    # Сортуємо множину випадкових номерів
+        if step_number not in lottery_numbers:          # Перевірка чи число вже є у списку
+            lottery_numbers.append(step_number)         # Додаємо випадковий номер до списку результатів
+               
+    sorted_lottery_numbers = sorted(lottery_numbers)
     return sorted_lottery_numbers
 
-lottery_numbers = get_numbers_ticket(1, 49, 6)
+lottery_numbers = get_numbers_ticket(1, 2, 2)
 print("Ваші лотерейні числа:", lottery_numbers)
     
 
